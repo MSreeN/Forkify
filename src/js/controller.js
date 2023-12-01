@@ -1,3 +1,5 @@
+import icons from 'url:../img/icons.svg';
+
 const recipeContainer = document.querySelector('.recipe');
 
 const timeout = function (s) {
@@ -11,10 +13,20 @@ const timeout = function (s) {
 // https://forkify-api.herokuapp.com/v2
 
 ///////////////////////////////////////
+const renderSpinner = function (parentEl) {
+  const markup = `<div class="spinner">
+  <svg>
+    <use href="${icons}#icon-loader"></use>
+  </svg>
+</div>`;
+  recipeContainer.innerHTML = '';
+  recipeContainer.insertAdjacentHTML('afterbegin', markup);
+};
 
 async function showRecipe() {
   try {
     //1) Loading recipe
+    renderSpinner(recipeContainer);
     const response = await fetch(
       'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
     );
@@ -44,7 +56,7 @@ async function showRecipe() {
         <div class="recipe__details">
           <div class="recipe__info">
             <svg class="recipe__info-icon">
-              <use href="src/img/icons.svg#icon-clock"></use>
+              <use href="${icons}#icon-clock"></use>
             </svg>
             <span class="recipe__info-data recipe__info-data--minutes">${
               recipe.cookingTime
@@ -53,7 +65,7 @@ async function showRecipe() {
           </div>
           <div class="recipe__info">
             <svg class="recipe__info-icon">
-              <use href="src/img/icons.svg#icon-users"></use>
+              <use href="${icons}#icon-users"></use>
             </svg>
             <span class="recipe__info-data recipe__info-data--people">${
               recipe.servings
@@ -63,12 +75,12 @@ async function showRecipe() {
             <div class="recipe__info-buttons">
               <button class="btn--tiny btn--increase-servings">
                 <svg>
-                  <use href="src/img/icons.svg#icon-minus-circle"></use>
+                  <use href="${icons}#icon-minus-circle"></use>
                 </svg>
               </button>
               <button class="btn--tiny btn--increase-servings">
                 <svg>
-                  <use href="src/img/icons.svg#icon-plus-circle"></use>
+                  <use href="${icons}#icon-plus-circle"></use>
                 </svg>
               </button>
             </div>
@@ -76,12 +88,12 @@ async function showRecipe() {
 
           <div class="recipe__user-generated">
             <svg>
-              <use href="src/img/icons.svg#icon-user"></use>
+              <use href="${icons}#icon-user"></use>
             </svg>
           </div>
           <button class="btn--round">
             <svg class="">
-              <use href="src/img/icons.svg#icon-bookmark-fill"></use>
+              <use href="${icons}#icon-bookmark-fill"></use>
             </svg>
           </button>
         </div>
@@ -93,7 +105,7 @@ async function showRecipe() {
               .map(ingredient => {
                 return `<li class="recipe__ingredient">
               <svg class="recipe__icon">
-                <use href="src/img/icons.svg#icon-check"></use>
+                <use href="${icons}#icon-check"></use>
               </svg>
               <div class="recipe__quantity">${
                 ingredient.quantity ? ingredient.quantity : ''
@@ -124,7 +136,7 @@ async function showRecipe() {
           >
             <span>Directions</span>
             <svg class="search__icon">
-              <use href="src/img/icons.svg#icon-arrow-right"></use>
+              <use href="${icons}#icon-arrow-right"></use>
             </svg>
           </a>
         </div>`;

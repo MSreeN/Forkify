@@ -1,4 +1,8 @@
 import icons from 'url:../img/icons.svg';
+//this package is for polyfilling features for most real world browsers
+import 'core-js/stable';
+//this package is for polyfilling async and await
+import 'regenerator-runtime/runtime';
 
 const recipeContainer = document.querySelector('.recipe');
 
@@ -25,10 +29,12 @@ const renderSpinner = function (parentEl) {
 
 async function showRecipe() {
   try {
+    const id = window.location.hash.slice(1);
+    console.log(id);
     //1) Loading recipe
     renderSpinner(recipeContainer);
     const response = await fetch(
-      'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
+      `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
     );
     const data = await response.json();
     let recipe = data.data.recipe;
@@ -147,4 +153,7 @@ async function showRecipe() {
   }
 }
 
-showRecipe();
+// showRecipe();
+
+//loading the recipe whenever the hash changes
+window.addEventListener('hashchange', showRecipe);

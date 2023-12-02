@@ -32,6 +32,7 @@ async function showRecipe() {
     const id = window.location.hash.slice(1);
     console.log(id);
     //1) Loading recipe
+    if (!id) return;
     renderSpinner(recipeContainer);
     const response = await fetch(
       `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
@@ -156,4 +157,12 @@ async function showRecipe() {
 // showRecipe();
 
 //loading the recipe whenever the hash changes
-window.addEventListener('hashchange', showRecipe);
+// window.addEventListener('hashchange', showRecipe);
+// if you paste the url in other tab it won't load the recipe because there is no hash change because hash was created when you pasted the url so website won't show the recipe
+// We should make use of load event that fires when page was loaded for the first time
+// we should use load event when url is pasted to other tab because hashchange event won't get fired as said above hash was created for the first time there and wasn't changed and we should use hashchange event when hash was changed in same tab, we can't use load event here because load event gets fired when page is loaded for first time and page was already loaded here
+
+// flow => user clicks on anchor tag => anchor tag changes has as set to href => when hash changes window fires hashchange event and executes code
+['hashchange', 'load'].forEach(event =>
+  window.addEventListener(event, showRecipe)
+);

@@ -29,6 +29,7 @@ const renderSpinner = function (parentEl) {
 
 async function showRecipe() {
   try {
+    //getting the recipe id from the url(url was first set to anchor clicking on which makes the url to change id and we take that id and fetch the particular recipe )
     const id = window.location.hash.slice(1);
     console.log(id);
     //1) Loading recipe
@@ -163,6 +164,7 @@ async function showRecipe() {
 // we should use load event when url is pasted to other tab because hashchange event won't get fired as said above hash was created for the first time there and wasn't changed and we should use hashchange event when hash was changed in same tab, we can't use load event here because load event gets fired when page is loaded for first time and page was already loaded here
 
 // flow => user clicks on anchor tag => anchor tag changes has as set to href => when hash changes window fires hashchange event and executes code
+//looping through these 2 events right after code executes
 ['hashchange', 'load'].forEach(event =>
   window.addEventListener(event, showRecipe)
 );

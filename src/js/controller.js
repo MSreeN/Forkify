@@ -1,3 +1,5 @@
+import * as model from './model.js';
+
 import icons from 'url:../img/icons.svg';
 //this package is for polyfilling features for most real world browsers
 import 'core-js/stable';
@@ -35,21 +37,8 @@ async function showRecipe() {
     //1) Loading recipe
     if (!id) return;
     renderSpinner(recipeContainer);
-    const response = await fetch(
-      `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
-    );
-    const data = await response.json();
-    let recipe = data.data.recipe;
-    if (!response.ok) throw new Error(`${data.message} (${response.status})`);
-    recipe = {
-      id: recipe.id,
-      title: recipe.title,
-      publisher: recipe.publisher,
-      sourceUrl: recipe.source_url,
-      servings: recipe.servings,
-      cookingTime: recipe.cooking_time,
-      ingredients: recipe.ingredients,
-    };
+    await model.loadRecipe(id);
+    const { recipe } = model.state;
     console.log(recipe);
 
     //2) Rendering recipe

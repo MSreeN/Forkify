@@ -5,8 +5,8 @@ class RecipeView {
   #data;
 
   render(data) {
-    this.data = data;
-    const markup = this.#generateMarkup;
+    this.#data = data;
+    const markup = this.#generateMarkup();
     this.#clear();
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
@@ -26,6 +26,7 @@ class RecipeView {
   };
 
   #generateMarkup() {
+    console.log(this.#data);
     return `
         <figure class="recipe__fig">
           <img src="${this.#data.url}" alt="${

@@ -1,7 +1,6 @@
 import * as model from './model.js';
 import recipeView from './views/recipeView.js';
 
-import icons from 'url:../img/icons.svg';
 //this package is for polyfilling features for most real world browsers
 import 'core-js/stable';
 //this package is for polyfilling async and await
@@ -20,15 +19,6 @@ const timeout = function (s) {
 // https://forkify-api.herokuapp.com/v2
 
 ///////////////////////////////////////
-const renderSpinner = function (parentEl) {
-  const markup = `<div class="spinner">
-  <svg>
-    <use href="${icons}#icon-loader"></use>
-  </svg>
-</div>`;
-  recipeContainer.innerHTML = '';
-  recipeContainer.insertAdjacentHTML('afterbegin', markup);
-};
 
 async function controlRecipes() {
   try {
@@ -36,7 +26,7 @@ async function controlRecipes() {
     const id = window.location.hash.slice(1);
     //1) Loading recipe
     if (!id) return;
-    renderSpinner(recipeContainer);
+    recipeView.renderSpinner();
     await model.loadRecipe(id);
     const { recipe } = model.state;
     console.log(recipe);

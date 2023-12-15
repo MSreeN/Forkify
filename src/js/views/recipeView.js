@@ -38,7 +38,7 @@ class RecipeView {
     // flow => user clicks on anchor tag => anchor tag changes has as set to href => when hash changes window fires hashchange event and executes code
     //looping through these 2 events right after code executes
     ['hashchange', 'load'].forEach(event =>
-      window.addEventListener(event, controlRecipes)
+      window.addEventListener(event, handler)
     );
   }
 

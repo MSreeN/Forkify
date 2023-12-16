@@ -33,7 +33,7 @@ async function controlRecipes() {
     recipeView.render(model.state.recipe);
   } catch (err) {
     console.error(err);
-    recipeView.renderError(err);
+    recipeView.renderError();
   }
 }
 

@@ -34,6 +34,7 @@ async function controlRecipes() {
   } catch (err) {
     console.error(err);
     recipeView.renderError();
+    // recipeView.renderError(err);
   }
 }
 

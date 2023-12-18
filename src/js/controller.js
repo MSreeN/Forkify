@@ -4,7 +4,8 @@ import recipeView from './views/recipeView.js';
 //this package is for polyfilling features for most real world browsers
 import 'core-js/stable';
 //this package is for polyfilling async and await
-import 'regenerator-runtime/runtime';
+// import 'regenerator-runtime/runtime';
+// import { async } from 'regenerator-runtime';
 
 // const timeout = function (s) {
 //   return new Promise(function (_, reject) {
@@ -37,6 +38,13 @@ async function controlRecipes() {
     // recipeView.renderError(err);
   }
 }
+
+const controlSearchResults = async function () {
+  await model.loadSearchResults('pizza');
+  console.log(model.state.search.results);
+};
+
+controlSearchResults();
 
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);

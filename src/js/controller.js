@@ -3,21 +3,10 @@ import recipeView from './views/recipeView.js';
 
 //this package is for polyfilling features for most real world browsers
 import 'core-js/stable';
+import searchView from './views/SearchView.js';
 //this package is for polyfilling async and await
 // import 'regenerator-runtime/runtime';
 // import { async } from 'regenerator-runtime';
-
-// const timeout = function (s) {
-//   return new Promise(function (_, reject) {
-//     setTimeout(function () {
-//       reject(new Error(`Request took too long! Timeout after ${s} second`));
-//     }, s * 1000);
-//   });
-// };
-
-// https://forkify-api.herokuapp.com/v2
-
-///////////////////////////////////////
 
 async function controlRecipes() {
   try {
@@ -40,6 +29,9 @@ async function controlRecipes() {
 }
 
 const controlSearchResults = async function () {
+  const query = searchView.getQuery();
+  if (!query) return;
+
   await model.loadSearchResults('pizza');
   console.log(model.state.search.results);
 };

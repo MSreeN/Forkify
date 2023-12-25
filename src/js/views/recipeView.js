@@ -3,12 +3,12 @@ import View from './view';
 import icons from 'url:../../img/icons.svg';
 import { Fraction } from 'fractional';
 
-class RecipeView {
+class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
-  _data;
   _errorMessage = 'We could not find that recipe. Please try another one!';
   _message = '';
 
+  _data;
   render(data) {
     this._data = data;
     const markup = this._generateMarkup();

@@ -1,5 +1,6 @@
 import * as model from './model.js';
 import recipeView from './views/recipeView.js';
+import ResultsView from './views/ResultsView.js';
 
 //this package is for polyfilling features for most real world browsers
 import 'core-js/stable';
@@ -29,6 +30,7 @@ async function controlRecipes() {
 }
 
 const controlSearchResults = async function () {
+  ResultsView.renderSpinner();
   const query = searchView.getQuery();
   if (!query) return;
 

@@ -35,6 +35,7 @@ const controlSearchResults = async function () {
   if (!query) return;
 
   await model.loadSearchResults(query);
+  ResultsView.render(model.state.search.results);
   console.log(model.state.search.results);
 };
 

@@ -8,23 +8,23 @@ class ResultsView extends View {
     return this._data.map(this._generateMarkupPreview).join('');
   }
 
-  _generateMarkupPreview(res) {
-    return `    <li class="preview">
-
-    <a class="preview__link preview__link--active" href="#23456">
-    <figure class="preview__fig">
-      <img src="${res.image}" />
-    </figure>
-    <div class="preview__data">
-      <h4 class="preview__title">${res.title}</h4>
-      <p class="preview__publisher">${res.publisher}</p>
-      <div class="preview__user-generated">
-        <svg>
-          <use href="src/img/icons.svg#icon-user"></use>
-        </svg>
-      </div>
-    </div>
-  </a>;
+  _generateMarkupPreview(results) {
+    return ` 
+        <li class="preview">
+          <a class="preview__link" href="#${results.id}">
+            <figure class="preview__fig">
+              <img src="${results.image}" alt=${results.title} />
+            </figure>
+            <div class="preview__data">
+              <h4 class="preview__title">${results.title}</h4>
+              <p class="preview__publisher">${results.publisher}</p>
+              <div class="preview__user-generated">
+                <svg>
+                  <use href="src/img/icons.svg#icon-user"></use>
+                 </svg>
+              </div>
+            </div>
+          </a>
         </li>`;
   }
 }

@@ -3,7 +3,7 @@ import recipeView from './views/recipeView.js';
 import ResultsView from './views/ResultsView.js';
 
 //this package is for polyfilling features for most real world browsers
-import 'core-js/stable';
+// import 'core-js/stable';
 import searchView from './views/SearchView.js';
 //this package is for polyfilling async and await
 // import 'regenerator-runtime/runtime';

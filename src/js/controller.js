@@ -1,10 +1,11 @@
 import * as model from './model.js';
 import recipeView from './views/recipeView.js';
+import searchView from './views/SearchView.js';
 import ResultsView from './views/ResultsView.js';
 
 //this package is for polyfilling features for most real world browsers
 // import 'core-js/stable';
-import searchView from './views/SearchView.js';
+
 //this package is for polyfilling async and await
 // import 'regenerator-runtime/runtime';
 // import { async } from 'regenerator-runtime';
@@ -45,3 +46,11 @@ const init = function () {
 };
 
 init();
+
+if (module.hot) {
+  module.hot.accept(() => {
+    location.reload();
+  });
+}
+
+// "parcel": "^2.10.3"

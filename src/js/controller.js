@@ -3,6 +3,9 @@ import recipeView from './views/recipeView.js';
 import searchView from './views/SearchView.js';
 import ResultsView from './views/ResultsView.js';
 
+if (module.hot) {
+  module.hot.accept();
+}
 //this package is for polyfilling features for most real world browsers
 // import 'core-js/stable';
 

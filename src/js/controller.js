@@ -50,10 +50,11 @@ const init = function () {
 
 init();
 
-if (module.hot) {
-  module.hot.accept(() => {
-    location.reload();
-  });
-}
+//below code from parcel, only replaces the elements that needs to be replaced in the dom
+// if (module.hot) {
+//   module.hot.accept(() => {
+//     location.reload();
+//   });
+// }
 
 // "parcel": "^2.10.3"

@@ -5,11 +5,11 @@ class ResultsView extends View {
   _errorMessage = 'No results found for your query! Please try again';
 
   _generateMarkup() {
-    console.log(this._data);
     return this._data.map(this._generateMarkupPreview).join('');
   }
 
   _generateMarkupPreview(results) {
+    console.log(this._data);
     return ` 
         <li class="preview">
           <a class="preview__link" href="#${results.id}">

@@ -48,3 +48,10 @@ export const loadSearchResults = async function (query) {
     throw error;
   }
 };
+
+export default searchResultsPage = function (page) {
+  let start = (page - 1) * 10;
+  let end = page * 10;
+
+  return state.search.results.slice(start, end);
+};

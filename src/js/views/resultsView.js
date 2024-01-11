@@ -5,7 +5,7 @@ class ResultsView extends View {
   _errorMessage = 'No results found for your query! Please try again';
 
   _generateMarkup() {
-    console.log(this._data);
+    console.log('hello world');
     return this._data.map(this._generateMarkupPreview).join('');
   }
 

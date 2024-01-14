@@ -49,7 +49,7 @@ export const loadSearchResults = async function (query) {
   }
 };
 
-export default searchResultsPage = function (page) {
+export const searchResultsPage = function (page) {
   let start = (page - 1) * 10;
   let end = page * 10;
 

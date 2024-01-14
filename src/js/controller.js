@@ -3,9 +3,9 @@ import recipeView from './views/recipeView.js';
 import searchView from './views/SearchView.js';
 import ResultsView from './views/ResultsView.js';
 
-if (module.hot) {
-  module.hot.accept();
-}
+// if (module.hot) {
+//   module.hot.accept();
+// }
 //this package is for polyfilling features for most real world browsers
 // import 'core-js/stable';
 
@@ -58,3 +58,11 @@ init();
 // }
 
 // "parcel": "^2.10.3"
+
+// <use href="${icons}#icon-clock"></use>
+
+// ${
+//   ingredient.quantity
+//     ? new Fraction(ingredient.quantity).toString()
+//     : ''
+// }

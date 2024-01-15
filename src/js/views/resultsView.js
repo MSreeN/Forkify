@@ -20,6 +20,9 @@ class ResultsView extends View {
               <h4 class="preview__title">${results.title}</h4>
               <p class="preview__publisher">${results.publisher}</p>
               <div class="preview__user-generated">
+              <svg>
+                    <use href="src/img/icons.svg#icon-user"></use>
+                  </svg>
               </div>
             </div>
           </a>

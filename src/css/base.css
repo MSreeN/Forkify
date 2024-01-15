@@ -405,7 +405,7 @@ body {
   align-items: center;
 }
 .preview__title {
-  grid-column: -1;
+  grid-column: 1/-1;
   font-size: 1.45rem;
   color: #f38e82;
   text-transform: uppercase;

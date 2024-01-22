@@ -54,8 +54,8 @@ export const loadSearchResults = async function (query) {
 
 export const searchResultsPage = function (page) {
   state.search.page = page;
-  let start = (page - 1) * 10;
-  let end = page * 10;
+  let start = (page - 1) * RES_PER_PAGE;
+  let end = page * RES_PER_PAGE;
 
   return state.search.results.slice(start, end);
 };

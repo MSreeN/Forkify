@@ -6,11 +6,10 @@ class PaginationView extends View {
     this._parentElement.addEventListener('click', e => {
       const btn = e.target.closest('.btn--inline');
       if (!btn) return;
-      const gotoPage = btn.dataset.goto;
+      const gotoPage = +btn.dataset.goto;
       console.log(gotoPage);
+      handler(gotoPage);
     });
-
-    handler();
   }
 
   _generateMarkup() {

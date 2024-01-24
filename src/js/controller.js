@@ -27,6 +27,7 @@ async function controlRecipes() {
 
     //2) Rendering recipe
     recipeView.render(model.state.recipe);
+    // controlServings(8);
   } catch (err) {
     console.error(err);
     recipeView.renderError();
@@ -59,7 +60,10 @@ function controlPagination(goToPage) {
 
 function controlServings() {
   //update the recipe servings
+  model.updateServings(8);
+
   //update recipe view
+  recipeView.render(model.state.recipe);
 }
 
 const init = function () {

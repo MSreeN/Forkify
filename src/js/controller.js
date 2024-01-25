@@ -63,6 +63,7 @@ function controlServings(newServings) {
   model.updateServings(newServings);
 
   //update recipe view
+  //updates whole recipe view(causes image to reload)
   recipeView.render(model.state.recipe);
 }
 

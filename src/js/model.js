@@ -62,6 +62,7 @@ export const searchResultsPage = function (page) {
 
 export function updateServings(newServings) {
   state.recipe.ingredients.forEach(ingredient => {
+    //Fraction ingredients
     ingredient.quantity = (
       (ingredient.quantity * newServings) /
       state.recipe.servings

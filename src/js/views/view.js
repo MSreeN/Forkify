@@ -16,7 +16,11 @@ export default class View {
       return this.renderError();
 
     this._data = data;
+    //we only change the dom elements that needs to be changed, reduces lot of friction when we update servings
     const newMarkup = this._generateMarkup();
+
+    //we do the change by comparing the elements and comparison using string is difficult so we create dom element out of newMarkup
+    const newDOM = document.createRange().createContextualFragment(newMarkup);
   }
 
   _clear() {

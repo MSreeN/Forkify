@@ -68,8 +68,6 @@ export function updateServings(newServings) {
       state.recipe.servings
     ).toFixed(2);
     state.recipe.servings = newServings;
-    console.log(ingredient.quantity);
     //formula for newIngredientQuantity: (newServing * OldIngredientQuantity) / oldServing
   });
-  console.log(state.recipe);
 }

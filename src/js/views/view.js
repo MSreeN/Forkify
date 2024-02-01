@@ -21,11 +21,12 @@ export default class View {
 
     //we do the change by comparing the elements and comparison using string is difficult so we create dom element out of newMarkup
     const newDOM = document.createRange().createContextualFragment(newMarkup);
-    const newElements = newDOM.querySelector('*');
+    const newElements = newDOM.querySelectorAll('*');
+    console.log(newElements);
     const curElements = Array.from(this._parentElement.querySelector('*'));
 
     //looping through new Elements
-    newElements.forEach((newEl, i) => {});
+    // newElements.forEach((newEl, i) => {});
   }
 
   _clear() {

@@ -64,7 +64,7 @@ function controlServings(newServings) {
 
   //update recipe view
   //updates whole recipe view(causes image to reload)
-  recipeView.render(model.state.recipe);
+  recipeView.update(model.state.recipe);
 }
 
 const init = function () {

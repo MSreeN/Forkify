@@ -22,7 +22,6 @@ export default class View {
     //we do the change by comparing the elements and comparison using string is difficult so we create dom element out of newMarkup
     const newDOM = document.createRange().createContextualFragment(newMarkup);
     const newElements = Array.from(newDOM.querySelectorAll('*'));
-    console.log(newElements);
     const curElements = Array.from(this._parentElement.querySelectorAll('*'));
 
     newElements.forEach((nEle, i) => {
@@ -32,6 +31,13 @@ export default class View {
         nEle.firstChild.nodeValue.trim() !== ''
       ) {
         curEle.textContent = nEle.textContent;
+      }
+
+      if (!nEle.isEqualNode(curEle)) {
+        // curEle.setAttribute(nEle.attributes);
+        Array.from(nEle.attributes).forEach(attr =>
+          curEle.setAttribute(attr.name, attr.value)
+        );
       }
     });
 

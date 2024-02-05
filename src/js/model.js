@@ -63,11 +63,11 @@ export const searchResultsPage = function (page) {
 export function updateServings(newServings) {
   state.recipe.ingredients.forEach(ingredient => {
     //Fraction ingredients
+    //formula for newIngredientQuantity: (newServing * OldIngredientQuantity) / oldServing
     ingredient.quantity = (
       (ingredient.quantity * newServings) /
       state.recipe.servings
     ).toFixed(2);
-    state.recipe.servings = newServings;
-    //formula for newIngredientQuantity: (newServing * OldIngredientQuantity) / oldServing
   });
+  state.recipe.servings = newServings;
 }

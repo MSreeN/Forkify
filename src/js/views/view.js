@@ -26,6 +26,7 @@ export default class View {
 
     newElements.forEach((nEle, i) => {
       const curEle = curElements[i];
+      //update servings
       if (
         !nEle.isEqualNode(curEle) &&
         nEle.firstChild.nodeValue.trim() !== ''
@@ -33,6 +34,7 @@ export default class View {
         curEle.textContent = nEle.textContent;
       }
 
+      //replacing the elements attributes(we replaced text value but we still have attributes like servings dataset on element which we still need to update)
       if (!nEle.isEqualNode(curEle)) {
         // curEle.setAttribute(nEle.attributes);
         Array.from(nEle.attributes).forEach(attr =>

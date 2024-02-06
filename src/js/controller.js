@@ -27,6 +27,11 @@ async function controlRecipes() {
 
     //2) Rendering recipe
     recipeView.render(model.state.recipe);
+
+    //we can use below method to mark selected search result, when hash changes this method is called.
+    // ResultsView.render(model.state.search.results);
+    ResultsView.update(model.searchResultsPage(model.state.search.page));
+
     // controlServings(8);
   } catch (err) {
     console.error(err);
@@ -47,7 +52,7 @@ const controlSearchResults = async function () {
   // ResultsView.render(model.state.search.results);
 
   //3) Render results
-  ResultsView.render(model.searchResultsPage(1));
+  ResultsView.render(model.searchResultsPage(model.state.search.page));
 
   //4)Render initial pagination button
   PaginationView.render(model.state.search);

@@ -83,6 +83,14 @@ class RecipeView extends View {
     });
   }
 
+  addHandlerBookmark(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const btn = e.target.closest('.btn--bookmark');
+      if (!btn) return;
+      handler();
+    });
+  }
+
   _generateMarkup() {
     return `
         <figure class="recipe__fig">
@@ -136,9 +144,9 @@ class RecipeView extends View {
               <use href="src/img/icons.svg#icon-user"></use>
             </svg>
           </div>
-          <button class="btn--round">
+          <button class="btn--round btn--bookmark">
             <svg class="">
-              <use href="src/img/icons.svg#icon-bookmark-fill"></use>
+              <use href="src/img/icons.svg#icon-bookmark"></use>
             </svg>
           </button>
         </div>
@@ -150,7 +158,7 @@ class RecipeView extends View {
               .map(this._generateMarkupIngredient)
               .join('')}
           </ul>
-        </div>
+        </div> 
 
         <div class="recipe__directions">
           <h2 class="heading--2">How to cook it</h2>

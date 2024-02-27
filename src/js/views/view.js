@@ -29,7 +29,7 @@ export default class View {
       //update servings
       if (
         !nEle.isEqualNode(curEle) &&
-        nEle.firstChild.nodeValue.trim() !== ''
+        nEle.firstChild?.nodeValue.trim() !== ''
       ) {
         curEle.textContent = nEle.textContent;
       }

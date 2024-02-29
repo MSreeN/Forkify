@@ -3,6 +3,8 @@ import recipeView from './views/recipeView.js';
 import searchView from './views/SearchView.js';
 import ResultsView from './views/ResultsView.js';
 import PaginationView from './views/PaginationView.js';
+import bookmarksView from './views/bookmarksView.js';
+import previewView from './views/previewView.js';
 
 // if (module.hot) {
 //   module.hot.accept();
@@ -27,6 +29,7 @@ async function controlRecipes() {
 
     //2) Rendering recipe
     recipeView.render(model.state.recipe);
+    bookmarksView.update(model.state.bookmarks);
 
     //we can use below method to mark selected search result, when hash changes this method is called.
     // ResultsView.render(model.state.search.results);
@@ -73,13 +76,18 @@ function controlServings(newServings) {
 }
 
 const controlAddBookmark = function () {
+  //Add or delete bookmark
   if (model.state.recipe.bookmarked) {
     model.deleteBookmark(model.state.recipe.id);
   } else {
     model.addBookmark(model.state.recipe);
   }
-  console.log(model.state.recipe);
+
+  //update recipe view
   recipeView.update(model.state.recipe);
+
+  //Render bookmarks
+  bookmarksView.render(model.state.bookmarks);
 };
 
 const init = function () {

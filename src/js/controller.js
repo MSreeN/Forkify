@@ -96,8 +96,14 @@ function controlBookmarks() {
   bookmarksView.render(model.state.bookmarks);
 }
 
-function controlFormData(data) {
-  console.log(data);
+async function controlFormData(data) {
+  try {
+    // console.log(data);
+    await model.uploadRecipe(data);
+  } catch (err) {
+    addRecipeView.renderError(err.message);
+    throw err;
+  }
 }
 
 const init = function () {

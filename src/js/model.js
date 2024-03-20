@@ -103,6 +103,33 @@ export const deleteBookmark = function (id) {
   controlBookmarks();
 };
 
+export const uploadRecipe = async function (newRecipe) {
+  try {
+    const ingredients = Object.entries(newRecipe)
+      .filter(entry => entry[0].startsWith('ingredient-') && entry[1] !== '')
+      .map(ingredient => {
+        const ing = ingredient[1].split(',');
+        if (ing.length !== 3)
+          throw new Error(
+            'Wrong ingredient format! Please use the correct format'
+          );
+        const [quantity, unit, description] = ing;
+
+        return {
+          quantity: quantity ? quantity : null,
+          unit: unit ? unit : '',
+          description: description ? description : '',
+        };
+      });
+    console.log(ingredients);
+  } catch (err) {
+    throw err;
+  }
+  // const ingredients = newRecipe.map((recipe, i) => {
+
+  // })
+};
+
 const init = function () {
   state.bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
 };

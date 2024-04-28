@@ -105,10 +105,11 @@ export const deleteBookmark = function (id) {
 
 export const uploadRecipe = async function (newRecipe) {
   try {
+    console.log('newRecipe', newRecipe);
     const ingredients = Object.entries(newRecipe)
       .filter(entry => entry[0].startsWith('ingredient-') && entry[1] !== '')
       .map(ingredient => {
-        const ing = ingredient[1].split(',');
+        const ing = ingredient[1].replaceAll(' ', '').split(',');
         if (ing.length !== 3)
           throw new Error(
             'Wrong ingredient format! Please use the correct format'

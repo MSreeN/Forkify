@@ -99,10 +99,11 @@ function controlBookmarks() {
 async function controlFormData(data) {
   try {
     // console.log(data);
-    await model.uploadRecipe(data);
+    const data1 = await model.uploadRecipe(data);
+    console.log(data1, 'from controller');
   } catch (err) {
     addRecipeView.renderError(err.message);
-    throw err;
+    // throw err;
   }
 }
 

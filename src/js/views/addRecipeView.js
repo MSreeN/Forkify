@@ -16,7 +16,6 @@ class AddRecipeView extends View {
   toggleWindow() {
     this._overlay.classList.toggle('hidden');
     this._window.classList.toggle('hidden');
-    console.log('button clicked');
   }
 
   _addHandlerShowWindow() {
@@ -34,6 +33,7 @@ class AddRecipeView extends View {
       const dataArr = [...new FormData(this._parentElement)];
       // console.log('this', this);
       const data = Object.fromEntries(dataArr);
+      // console.log(data);
       handler(data);
     });
   }

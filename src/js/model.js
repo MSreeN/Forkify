@@ -1,5 +1,5 @@
 import { API_URL, RES_PER_PAGE } from './config.js';
-import { getJSON } from './helper.js';
+import { getJSON, sendJson } from './helper.js';
 
 export const state = {
   recipe: {},
@@ -122,7 +122,20 @@ export const uploadRecipe = async function (newRecipe) {
           description: description ? description : '',
         };
       });
-    console.log(ingredients);
+
+    const recipe = {
+      title: newRecipe.title,
+      source_url: newRecipe.source_url,
+      image_url: newRecipe.image,
+      publisher: newRecipe.publisher,
+      cooking_time: +newRecipe.cookingTime,
+      servings: +newRecipe.servings,
+      ingredients,
+    };
+
+    console.log(recipe);
+    const apiResponse = sendJson(`${API_URL}`, recipe);
+    console.log(apiResponse);
   } catch (err) {
     throw err;
   }

@@ -141,8 +141,9 @@ export const uploadRecipe = async function (newRecipe) {
 
     console.log(recipe);
     const apiResponse = await sendJson(`${API_URL}`, recipe);
-    state.recipe = apiResponse.data.recipe;
-    createRecipeObject(state.recipe);
+    const userRecipeResponse = createRecipeObject(apiResponse.data.recipe);
+    state.recipe = userRecipeResponse;
+    console.log(state.recipe);
     state.recipe.bookmarked = true;
     addBookmark(state.recipe);
     console.log(apiResponse);
@@ -155,7 +156,8 @@ export const uploadRecipe = async function (newRecipe) {
 };
 
 const init = function () {
-  state.bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+  const bookmarksData = JSON.parse(localStorage.getItem('bookmarks'));
+  state.bookmarks = bookmarksData ? bookmarksData : [];
 };
 
 init();

@@ -5,6 +5,7 @@ import ResultsView from './views/ResultsView.js';
 import PaginationView from './views/PaginationView.js';
 import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
+import { WINDOW_TIMEOUT_SEC } from './config.js';
 
 // if (module.hot) {
 //   module.hot.accept();
@@ -102,8 +103,16 @@ async function controlFormData(data) {
     console.log(model.state.recipe, 'from controller');
     //Render the recipe
     recipeView.render(model.state.recipe);
+
+    //Display success message after successfully adding recipe;
+
+    addRecipeView.renderMessage();
+    setTimeout(function () {
+      addRecipeView.toggleWindow();
+    }, WINDOW_TIMEOUT_SEC * 1000);
   } catch (err) {
     addRecipeView.renderError(err.message);
+    console.log(err);
     // throw err;
   }
 }

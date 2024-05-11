@@ -1,4 +1,4 @@
-import { API_URL, RES_PER_PAGE } from './config.js';
+import { API_KEY, API_URL, RES_PER_PAGE } from './config.js';
 import { getJSON, sendJson } from './helper.js';
 
 export const state = {
@@ -47,7 +47,7 @@ export const loadRecipe = async function (id) {
 export const loadSearchResults = async function (query) {
   try {
     state.search.query = query;
-    const response = await getJSON(`${API_URL}?search=${query}`);
+    const response = await getJSON(`${API_URL}?search=${query}&key=${API_KEY}`);
     state.search.results = response.data.recipes.map(recipe => {
       return {
         id: recipe.id,
@@ -55,6 +55,7 @@ export const loadSearchResults = async function (query) {
         publisher: recipe.publisher,
         sourceUrl: recipe.source_url,
         image: recipe.image_url,
+        ...{ key: recipe.key },
       };
     });
     console.log(state.search.results);

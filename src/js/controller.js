@@ -110,6 +110,11 @@ async function controlFormData(data) {
     setTimeout(function () {
       addRecipeView.toggleWindow();
     }, WINDOW_TIMEOUT_SEC * 1000);
+
+    //Render bookmark view
+    bookmarksView.render(model.state.bookmarks);
+
+    window.history.pushState(null, '', `#${model.state.recipe.id}`);
   } catch (err) {
     addRecipeView.renderError(err.message);
     console.log(err);

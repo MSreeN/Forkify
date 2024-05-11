@@ -146,6 +146,7 @@ export const uploadRecipe = async function (newRecipe) {
     console.log(state.recipe);
     state.recipe.bookmarked = true;
     addBookmark(state.recipe);
+    init();
     console.log(apiResponse);
   } catch (err) {
     throw err;
